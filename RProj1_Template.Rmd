@@ -22,8 +22,6 @@ library(datasauRus)
 
 ### Exercise 2
 
-(The answers for this Exercise are given for you below. But you should clean up some of the narrative so that it only includes what you want to turn in.)
-
 First let's plot the data in the dino dataset:
 
 ```{r plot-dino, fig.height=3, fig.width=6}
@@ -42,21 +40,22 @@ dino_data %>%
 
 ### Exercise 3
 
-(Add code and narrative as needed. Note that the R chunks are labeled with `plot-star` and `cor-star` to provide spaces to place the code for plotting and calculating the correlation coefficient. To finish, remember to clean up the narrative by removing these instructions.)
-
-
-
 ```{r plot-star}
-
+star_data <- datasaurus_dozen %>%
+  filter(dataset == "star")
+ggplot(data = star_data, mapping = aes(x = x, y = y)) +
+  geom_point()
 
 ```
 
-I'm some text, you should replace me with more meaningful text...
+> plot-star outputs a five-point star whereas plot-dino outputs a prehistoric reptile. 
  
 ```{r cor-star}
-
+star_data %>%
+  summarize(r = cor(x, y))
 
 ```
+> Correlation Coefficient (r) for plot-star is marginally bigger in comparison to plot-dino's r.
 
 ### Exercise 4
 
