@@ -2,7 +2,10 @@
 title: "R Project 1 - Hello R"
 author: "Obed Contreras"
 date: "Due Fed 3rd"
-output: html_document
+output: 
+  html_document: 
+    fig_width: 5
+    highlight: textmate
 ---
 
 MAKE SURE YOU READ AND FOLLOW **ALL** INSTRUCTIONS ON THE INSTRUCTION DOCUMENT. 
@@ -19,12 +22,34 @@ library(datasauRus)
 
 - 1846 rows. 
 - **dataset** , **x** , **y**
+```{r}
+datasaurus_dozen  %>% 
+  count(dataset)  %>%
+  print(13)
+```
+
+| # | Dataset | n | 
+|:--|:--|:--|
+| 1 |away | 142 |
+| 2 | bullseye | 142|
+| 3 | circle | 142|
+| 4 | dino | 142|
+| 5 | dots | 142|
+| 6 | h_lines | 142|
+| 7 | high_lines | 142|
+| 8 | slant_down | 142|
+| 9 | slant_up | 142|
+| 10 | star | 142|
+| 11 | v_lines | 142|
+| 12 | wide_lines | 142|
+| 13 | x_shape | 142|
+
 
 ### Exercise 2
 
 First let's plot the data in the dino dataset:
 
-```{r plot-dino, fig.height=3, fig.width=6}
+```{r plot-dino}
 dino_data <- datasaurus_dozen %>%
   filter(dataset == "dino")
 ggplot(data = dino_data, mapping = aes(x = x, y = y)) +
@@ -79,3 +104,34 @@ circle_data %>%
 ### Exercise 5
 
 (Add code and narrative as needed. To add R chunks either type out the backticks, curly braces, and the letter `r` or use the Insert chunk button above, with the green +C.)
+
+```{r}
+ggplot (datasaurus_dozen, aes (x = x, y = y, color = dataset)) + 
+  geom_point()+
+  facet_wrap(~ dataset, ncol = 3) + # facet the dataset, in 3 cols 
+  theme(legend.position = "none")
+``` 
+
+```{r}
+datasaurus_dozen %>%
+  group_by(dataset) %>%
+  summarize(r = cor(x, y)) %>%
+  print(13)
+```
+| # | Dataset | r |
+| :--: | :-- | :--: |
+| 1 | away | -0.0641 |
+| 2 | bullseye | -0.0686 |
+| 3 | circle | -0.0683 |
+| 4 | dino | -0.0645 |
+| 5 | dots | -0.0603 |
+| 6 | h_lines | -0.0617 |
+| 7 | high_lines | -0.0685 |
+| 8 | slant_down | -0.0690 |
+| 9 | slant_up | -0.0686 |
+| 10 | star | -0.0630 |
+| 11 | v_lines | -0.0694 |
+| 12 | wide_lines | -0.0666 |
+| 13 | x_shape | -0.0656 |
+
+
