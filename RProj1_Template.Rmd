@@ -29,6 +29,7 @@ dino_data <- datasaurus_dozen %>%
   filter(dataset == "dino")
 ggplot(data = dino_data, mapping = aes(x = x, y = y)) +
   geom_point()
+
 ```
 
 And next calculate the correlation between `x` and `y` in this dataset:
@@ -59,17 +60,21 @@ star_data %>%
 
 ### Exercise 4
 
-(Add code and narrative as needed. Note that two R chunks are given but they are not labeled. Use the convention from above to name them appropriately.)
-
 ```{r}
-
+circle_data <- datasaurus_dozen %>%
+  filter(dataset == "circle")
+ggplot(data = circle_data, mapping = aes(x = x, y = y)) +
+  geom_point()
 
 ```
 
 ```{r}
-
+circle_data %>%
+  summarize(r = cor(x, y))
 
 ```
+> Unlike the coefficient correlation (r) of star_data, the r of circle_data is marginally *bigger* than the r of dino_data. 
+
 
 ### Exercise 5
 
