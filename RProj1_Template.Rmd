@@ -1,7 +1,7 @@
 ---
 title: "R Project 1 - Hello R"
 author: "Obed Contreras"
-date: "Due Fed 3rd"
+date: "Due Sep 8th"
 output: 
   html_document: 
     fig_width: 5
@@ -21,7 +21,8 @@ library(datasauRus)
 ### Exercise 1
 
 - 1846 rows. 
-- **dataset** , **x** , **y**
+- 3 columns
+- **variables:** **dataset** , **x** , **y**
 ```{r}
 datasaurus_dozen  %>% 
   count(dataset)  %>%
@@ -133,5 +134,10 @@ datasaurus_dozen %>%
 | 11 | v_lines | -0.0694 |
 | 12 | wide_lines | -0.0666 |
 | 13 | x_shape | -0.0656 |
+
+
+```
+website: https://github.com/ObedJosafat/Data2401_RProj1
+```
 
 
